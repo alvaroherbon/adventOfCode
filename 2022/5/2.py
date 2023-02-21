@@ -12,15 +12,16 @@ def main():
             if char != " " and char != "[" and char != "]":
                 grid[numRow].append(char)
             numRow += 1
-    print(grid)
     for line in input.splitlines()[10:]:
         crates = line.split(" ")[1]
         fr = int(line.split(" ")[3]) - 1
         to = int(line.split(" ")[5]) - 1
-        print(crates, fr, to)
+        sub = []
         for i in range(int(crates)):
-            grid[int(to)].append(grid[int(fr)].pop())
-            print(grid)
+            sub.append(grid[int(fr)].pop())
+        sub.reverse()
+        grid[int(to)].extend(sub)
+    print(grid)
 
 
 main()
